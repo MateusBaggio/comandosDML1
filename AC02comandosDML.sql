@@ -1,6 +1,6 @@
-create database viagens
+create database viagens1
 
-use viagens
+use viagens1
 
 create table DESTINOS (
     id int primary key,
@@ -43,11 +43,11 @@ create table RESERVAS (
   /*  status 1 = confirmado 2 = não confirmada */
 )
 
-insert into DESTINOS (nome, pais, atracoes, custoMedioDiario, avaliacao)
-values ('Paris', 'França', 'Torre Eiffel, Museu do Louvre', 150, 4.8)
+insert into DESTINOS (id,nome, pais, atracoes, custoMedioDiario, avaliacoes)
+values ( 2,'Paris', 'França', 'Torre Eiffel, Museu do Louvre', 150, 4.8)
 
-insert into PACOTES (nome, duracaoDias, preco, inclusoes)
-values ('Aventura na Amazônia', 7, 1200, 'Transporte, Hospedagem, Guias')
+insert into PACOTES (id, nome, duracaoDias, preco, inclui)
+values ( 2 ,'Aventura na Amazônia', 7, 1200, 'Transporte, Hospedagem, Guias')
 
 update AVALIACOES set comentario = 'Incrível experiência cultural!'
 where destino = 'Toquio'
@@ -56,13 +56,13 @@ insert into CLIENTES ( id, nome, email, destinosInteresse)
 values ( 1, 'João Silva', 'joao.silva@exemplo.com', 'Nova York, Londres')
 
 /* supondo que id da maria é 2, e o de Bali é 3 */
-insert into RESERVAS (clienteId, destinoId, dataPartida, dataRetorno)
-values (2, 3, '2024-07-15', '2024-07-25')
+insert into RESERVAS ( id ,clienteId, destinoId, dataPartida, dataRetorno, status)
+values (2,2, 3, '2024-07-15', '2024-07-25', 1)
   
 update DESTINOS set custoMedioDiario = custoMedioDiario * 1.10
 where nome = 'Paris'
 
-update DESTINOS set avaliacao = 4.9
+update DESTINOS set avaliacoes = 4.9
 where nome = 'Paris'
 
 update PACOTES set duracaoDias = duracaoDias + 3
@@ -86,7 +86,7 @@ where id = 1
 update CLIENTES set destinosInteresse = destinosInteresse + ', Tóquio'
 where nome = 'João Silva';
 
-update PACOTES set nome = 'Aventura na Floresta Amazônica'
+update PACOTES set nome = 'AventuraFlorestaAmazônica'
 where nome = 'Aventura na Amazônia'
 
 delete from DESTINOS 
