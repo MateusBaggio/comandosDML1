@@ -1,0 +1,51 @@
+create database agendaEscolar
+
+use agendaEscolar
+
+create table tarefas(
+id int primary key,
+titulo varchar(30) not null,
+descricao char not null,
+dataDeEntrega date,
+statusDatarefa varchar(25)not null
+)
+
+alter table tarefas
+DROP COLUMN descricao;
+
+alter table tarefas
+ADD descricao varchar(200);
+
+insert into tarefas (id, titulo, descricao, dataDeEntrega, statusDatarefa)
+values (1, 'calculo', 'Faça a lista de exercicios presente em apostilas', '2024-08-22','em andamento')
+
+insert into tarefas (id, titulo, descricao, dataDeEntrega, statusDatarefa)
+values (2, 'Pintura', 'pinte o quadro da monalisa', '2024-08-30','em andamento')
+
+insert into tarefas (id, titulo, descricao, dataDeEntrega, statusDatarefa)
+values (3, 'poema', 'faça o resumo de um poema', '2024-08-05','Encerrado')
+
+insert into tarefas (id, titulo, descricao, dataDeEntrega, statusDatarefa)
+values (4, 'resumo de quimica', 'faça um resumo do conteudo', '2024-08-30','entregue')
+
+insert into tarefas (id, titulo, descricao, dataDeEntrega, statusDatarefa)
+values (5, 'flexbox', 'jogar jogos de flexbox', '2024-08-09','Entregue')
+	
+
+update tarefas set statusDatarefa = 'entregue'
+where id = 3
+
+update tarefas set descricao = 'pinte o quadro da monalisa com tinta de tecido'
+where id = 2
+
+delete from tarefas
+where id = 4
+
+delete from tarefas
+where statusDaTarefa = 'entregue' 
+
+
+alter table tarefas
+ADD prioridade varchar(20);
+
+select *from tarefas
